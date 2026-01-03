@@ -3,81 +3,103 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NO LOSS SETTING</title>
+<title>Success</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial;}
+*{box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
 body{
+  margin:0;
   height:100vh;
-  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  background:linear-gradient(135deg,#141e30,#243b55);
   display:flex;
-  align-items:center;
   justify-content:center;
-}
-.card{
-  width:90%;
-  max-width:380px;
-  background:rgba(255,255,255,0.08);
-  border-radius:20px;
-  padding:30px 20px;
+  align-items:center;
+  color:#fff;
   text-align:center;
-  box-shadow:0 25px 60px rgba(0,0,0,.4);
 }
-h1{color:#00ffd5;letter-spacing:2px;margin-bottom:20px;}
-.logo{width:65px;animation:glow 2s infinite;}
-@keyframes glow{
-  0%{transform:scale(1);filter:drop-shadow(0 0 5px #00ffd5);}
-  50%{transform:scale(1.25);filter:drop-shadow(0 0 20px #00ffd5);}
-  100%{transform:scale(1);filter:drop-shadow(0 0 5px #00ffd5);}
+.box{
+  padding:40px 25px;
 }
-.subtitle{color:#fff;margin:15px 0;font-weight:bold;}
-input{
+.logo{
+  width:110px;
+  margin:0 auto 20px;
+}
+.logo img{
   width:100%;
-  padding:14px;
-  border:none;
-  border-radius:12px;
-  margin-bottom:15px;
-  font-size:16px;
+  animation:pulse 1.5s infinite;
 }
-button{
-  width:100%;
-  padding:14px;
-  border:none;
-  border-radius:30px;
+@keyframes pulse{
+  0%{transform:scale(1);filter:drop-shadow(0 0 5px #00ffd5)}
+  50%{transform:scale(1.1);filter:drop-shadow(0 0 25px #00ffd5)}
+  100%{transform:scale(1)}
+}
+h1{
+  color:#00ffd5;
+  letter-spacing:2px;
+}
+.loading{
+  margin:25px auto 10px;
+  width:220px;
+  height:6px;
+  background:rgba(255,255,255,0.2);
+  border-radius:10px;
+  overflow:hidden;
+}
+.loading span{
+  display:block;
+  height:100%;
+  width:0;
   background:#00ffd5;
-  color:#000;
+  animation:load 3s forwards;
+}
+@keyframes load{
+  to{width:100%}
+}
+p{
+  margin-top:15px;
   font-size:18px;
-  font-weight:bold;
+}
+
+/* 🔹 Telegram Contact Style */
+.telegram-contact{
+  margin-top:22px;
+}
+.telegram-contact a{
+  color:#00ffd5;
+  font-size:14px;
+  font-weight:600;
+  text-decoration:none;
+  display:inline-block;
+  animation:telegramGlow 2s infinite;
+}
+@keyframes telegramGlow{
+  0%{text-shadow:0 0 5px #00ffd5;opacity:.7}
+  50%{text-shadow:0 0 18px #00ffd5;opacity:1}
+  100%{text-shadow:0 0 5px #00ffd5;opacity:.7}
 }
 </style>
 </head>
 
 <body>
+<div class="box">
+  <div class="logo">
+    <img src="quotex.png.PNG" alt="Quotex">
+  </div>
 
-<div class="card">
   <h1>NO LOSS SETTING</h1>
 
-  <img src="quotex.png.PNG" class="logo">
+  <div class="loading">
+    <span></span>
+  </div>
 
-  <div class="subtitle">ID LOGIN</div>
+  <p>ON SUCCESSFUL</p>
 
-  <input type="text" id="uid" placeholder="Enter UID">
-  <input type="password" id="pass" placeholder="Enter Password">
-
-  <button onclick="login()">Login</button>
+  <!-- ✅ Telegram Contact (Success page এও) -->
+  <div class="telegram-contact">
+    <a href="https://t.me/riskey09" target="_blank">
+      ✈️ Contact by Telegram :- @riskey09
+    </a>
+  </div>
 </div>
-
-<script>
-function login(){
-  const pass = document.getElementById("pass").value;
-
-  if(pass === "riskey09"){
-    window.location.href = "success.html";
-  }else{
-    alert("Wrong Password ❌");
-  }
-}
-</script>
-
 </body>
 </html>
