@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>No Loss Setting</title>
+<title>NO LOSS SETTING</title>
 
 <style>
 *{
@@ -19,7 +19,6 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
-  color:#fff;
 }
 
 .card{
@@ -28,7 +27,7 @@ body{
   background: rgba(255,255,255,0.08);
   border-radius:20px;
   padding:30px 20px;
-  box-shadow:0 20px 40px rgba(0,0,0,0.4);
+  box-shadow:0 25px 60px rgba(0,0,0,0.4);
   text-align:center;
 }
 
@@ -40,8 +39,8 @@ h1{
 
 /* LOGO */
 .logo-box{
-  width:80px;
-  height:80px;
+  width:90px;
+  height:90px;
   margin:0 auto 15px;
   display:flex;
   align-items:center;
@@ -49,13 +48,12 @@ h1{
 }
 
 .logo{
-  width:60px;
-  height:60px;
+  width:65px;
+  height:65px;
   animation: glow 2s infinite ease-in-out;
-  filter: drop-shadow(0 0 12px #00ffd5);
 }
 
-/* Glow Animation */
+/* Glow animation */
 @keyframes glow{
   0%{
     transform:scale(1);
@@ -63,7 +61,7 @@ h1{
     opacity:.7;
   }
   50%{
-    transform:scale(1.2);
+    transform:scale(1.25);
     filter: drop-shadow(0 0 20px #00ffd5);
     opacity:1;
   }
@@ -75,7 +73,8 @@ h1{
 }
 
 .subtitle{
-  margin-bottom:20px;
+  color:#fff;
+  margin-bottom:18px;
   font-weight:bold;
   letter-spacing:1px;
 }
@@ -99,11 +98,10 @@ button{
   font-size:18px;
   font-weight:bold;
   cursor:pointer;
-  transition:.3s;
 }
 
 button:active{
-  transform:scale(.96);
+  transform:scale(.95);
 }
 </style>
 </head>
@@ -115,13 +113,14 @@ button:active{
 
   <!-- QUOTEX LOGO -->
   <div class="logo-box">
-    <img src="quotex.png" class="logo" alt="Quotex Logo">
+    <img src="quotex.png.PNG" class="logo" alt="Quotex Logo">
   </div>
 
   <div class="subtitle">ID LOGIN</div>
 
   <input type="text" placeholder="Enter UID">
   <input type="password" placeholder="Enter Password">
+
   <button>Login</button>
 </div>
 
