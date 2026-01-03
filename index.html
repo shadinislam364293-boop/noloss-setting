@@ -3,45 +3,58 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NO LOSS SETTING</title>
+<title>No Loss Setting - Login</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial;}
+*{box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
 body{
+  margin:0;
   height:100vh;
   background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
   display:flex;
-  align-items:center;
   justify-content:center;
+  align-items:center;
+  color:#fff;
 }
 .card{
   width:90%;
-  max-width:380px;
+  max-width:360px;
   background:rgba(255,255,255,0.08);
-  border-radius:20px;
+  border-radius:18px;
   padding:30px 20px;
   text-align:center;
-  box-shadow:0 25px 60px rgba(0,0,0,.4);
+  backdrop-filter:blur(10px);
 }
-h1{color:#00ffd5;letter-spacing:2px;margin-bottom:20px;}
-.logo{width:65px;animation:glow 2s infinite;}
+.logo{
+  width:90px;
+  height:90px;
+  margin:0 auto 15px;
+}
+.logo img{
+  width:100%;
+  animation:glow 2s infinite alternate;
+}
 @keyframes glow{
-  0%{transform:scale(1);filter:drop-shadow(0 0 5px #00ffd5);}
-  50%{transform:scale(1.25);filter:drop-shadow(0 0 20px #00ffd5);}
-  100%{transform:scale(1);filter:drop-shadow(0 0 5px #00ffd5);}
+  from{filter:drop-shadow(0 0 5px #00ffd5)}
+  to{filter:drop-shadow(0 0 20px #00ffd5)}
 }
-.subtitle{color:#fff;margin:15px 0;font-weight:bold;}
+h1{
+  color:#00ffd5;
+  letter-spacing:2px;
+  margin-bottom:20px;
+}
 input{
   width:100%;
   padding:14px;
   border:none;
   border-radius:12px;
-  margin-bottom:15px;
+  margin:10px 0;
   font-size:16px;
 }
 button{
   width:100%;
   padding:14px;
+  margin-top:15px;
   border:none;
   border-radius:30px;
   background:#00ffd5;
@@ -53,31 +66,29 @@ button{
 </head>
 
 <body>
-
 <div class="card">
+  <div class="logo">
+    <img src="quotex.png.PNG" alt="Quotex">
+  </div>
+
   <h1>NO LOSS SETTING</h1>
 
-  <img src="quotex.png.PNG" class="logo">
+  <input type="text" placeholder="Enter UID">
+  <input type="password" placeholder="Enter Password">
 
-  <div class="subtitle">ID LOGIN</div>
-
-  <input type="text" id="uid" placeholder="Enter UID">
-  <input type="password" id="pass" placeholder="Enter Password">
-
-  <button onclick="login()">Login</button>
+  <button id="loginBtn" onclick="doLogin()">Login</button>
 </div>
 
 <script>
-function login(){
-  const pass = document.getElementById("pass").value;
+function doLogin(){
+  const btn=document.getElementById("loginBtn");
+  btn.innerText="Checking...";
+  btn.disabled=true;
 
-  if(pass === "riskey09"){
-    window.location.href = "success.html";
-  }else{
-    alert("Wrong Password ❌");
-  }
+  setTimeout(()=>{
+    window.location.href="success.html";
+  },1500);
 }
 </script>
-
 </body>
 </html>
