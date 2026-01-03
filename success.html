@@ -1,80 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Success</title>
-
 <style>
-*{box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
 body{
   margin:0;
   height:100vh;
-  background:linear-gradient(135deg,#141e30,#243b55);
+  background:#000;
   display:flex;
-  justify-content:center;
   align-items:center;
-  color:#fff;
-  text-align:center;
+  justify-content:center;
+  color:#00ffd5;
+  font-family:Arial;
 }
 .box{
-  padding:40px 25px;
-}
-.logo{
-  width:110px;
-  margin:0 auto 20px;
-}
-.logo img{
-  width:100%;
+  text-align:center;
   animation:pulse 1.5s infinite;
 }
 @keyframes pulse{
-  0%{transform:scale(1);filter:drop-shadow(0 0 5px #00ffd5)}
-  50%{transform:scale(1.1);filter:drop-shadow(0 0 25px #00ffd5)}
-  100%{transform:scale(1)}
-}
-h1{
-  color:#00ffd5;
-  letter-spacing:2px;
-}
-.loading{
-  margin-top:25px;
-  width:220px;
-  height:6px;
-  background:rgba(255,255,255,0.2);
-  border-radius:10px;
-  overflow:hidden;
-}
-.loading span{
-  display:block;
-  height:100%;
-  width:0;
-  background:#00ffd5;
-  animation:load 3s forwards;
-}
-@keyframes load{
-  to{width:100%}
-}
-p{
-  margin-top:25px;
-  font-size:18px;
+  0%{transform:scale(1);opacity:.6;}
+  50%{transform:scale(1.1);opacity:1;}
+  100%{transform:scale(1);opacity:.6;}
 }
 </style>
 </head>
-
 <body>
 <div class="box">
-  <div class="logo">
-    <img src="quotex.png.PNG" alt="Quotex">
-  </div>
-
   <h1>NO LOSS SETTING</h1>
-
-  <div class="loading">
-    <span></span>
-  </div>
-
-  <p>ON SUCCESSFUL</p>
+  <h2>ON SUCCESSFUL ✅</h2>
 </div>
 </body>
 </html>
