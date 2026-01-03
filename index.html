@@ -3,186 +3,127 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NO LOSS SETTING</title>
+<title>No Loss Setting</title>
 
 <style>
-body{
+*{
   margin:0;
-  font-family:Arial, sans-serif;
-  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+  height:100vh;
+  background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  display:flex;
+  align-items:center;
+  justify-content:center;
   color:#fff;
 }
 
-/* App container */
-.app{
-  max-width:420px;
-  margin:auto;
-  min-height:100vh;
+.card{
+  width:90%;
+  max-width:380px;
+  background: rgba(255,255,255,0.08);
+  border-radius:20px;
+  padding:30px 20px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.4);
+  text-align:center;
+}
+
+h1{
+  color:#00ffd5;
+  letter-spacing:2px;
+  margin-bottom:20px;
+}
+
+/* LOGO */
+.logo-box{
+  width:80px;
+  height:80px;
+  margin:0 auto 15px;
   display:flex;
   align-items:center;
   justify-content:center;
 }
 
-/* Card */
-.card{
-  width:100%;
-  background:rgba(255,255,255,.12);
-  padding:30px 25px 35px;
-  border-radius:20px;
-  text-align:center;
-  box-shadow:0 15px 40px rgba(0,0,0,.4);
+.logo{
+  width:60px;
+  height:60px;
+  animation: glow 2s infinite ease-in-out;
+  filter: drop-shadow(0 0 12px #00ffd5);
 }
 
-/* Title */
-h1{
-  color:#00ffcc;
-  margin-bottom:10px;
-  letter-spacing:1px;
-}
-
-/* Logo */
-.logo-box{
-  margin:15px 0 10px;
-  text-align:center;
-}
-
-.logo-anim{
-  width:90px;
-  height:auto;
-  animation:pulseGlow 2.5s infinite ease-in-out;
-}
-
-@keyframes pulseGlow{
+/* Glow Animation */
+@keyframes glow{
   0%{
     transform:scale(1);
-    filter:drop-shadow(0 0 6px #00ffcc);
-    opacity:.9;
+    filter: drop-shadow(0 0 6px #00ffd5);
+    opacity:.7;
   }
   50%{
-    transform:scale(1.08);
-    filter:drop-shadow(0 0 18px #00ffcc);
+    transform:scale(1.2);
+    filter: drop-shadow(0 0 20px #00ffd5);
     opacity:1;
   }
   100%{
     transform:scale(1);
-    filter:drop-shadow(0 0 6px #00ffcc);
-    opacity:.9;
+    filter: drop-shadow(0 0 6px #00ffd5);
+    opacity:.7;
   }
 }
 
-/* Inputs */
+.subtitle{
+  margin-bottom:20px;
+  font-weight:bold;
+  letter-spacing:1px;
+}
+
 input{
   width:100%;
   padding:14px;
-  margin:12px 0;
-  border:none;
   border-radius:12px;
+  border:none;
+  margin-bottom:15px;
   font-size:16px;
-  outline:none;
 }
 
-/* Button */
 button{
   width:100%;
-  padding:15px;
-  margin-top:10px;
-  background:#00ffcc;
-  color:#000;
+  padding:14px;
   border:none;
   border-radius:30px;
+  background:#00ffd5;
+  color:#000;
   font-size:18px;
   font-weight:bold;
   cursor:pointer;
+  transition:.3s;
 }
 
-/* Error msg */
-.msg{
-  margin-top:10px;
-  color:#ff7b7b;
-}
-
-/* Success screen */
-#success{
-  display:none;
-}
-
-.glow-text{
-  font-size:26px;
-  font-weight:bold;
-  animation:glowText 2s infinite alternate;
-}
-
-@keyframes glowText{
-  from{
-    color:#00ffcc;
-    text-shadow:0 0 10px #00ffcc;
-  }
-  to{
-    color:#00ff66;
-    text-shadow:0 0 25px #00ff66;
-  }
-}
-
-.check{
-  font-size:60px;
-  margin-bottom:15px;
+button:active{
+  transform:scale(.96);
 }
 </style>
 </head>
 
 <body>
 
-<div class="app">
+<div class="card">
+  <h1>NO LOSS SETTING</h1>
 
-  <!-- LOGIN CARD -->
-  <div class="card" id="login">
-    <h1>NO LOSS SETTING</h1>
-
-    <div class="logo-box">
-      <img src="quotex.png" alt="Quotex Logo" class="logo-anim">
-    </div>
-
-    <h3>ID LOGIN</h3>
-
-    <input id="uid" placeholder="Enter UID">
-    <input id="pass" type="password" placeholder="Enter Password">
-
-    <button onclick="login()">Login</button>
-    <div class="msg" id="msg"></div>
+  <!-- QUOTEX LOGO -->
+  <div class="logo-box">
+    <img src="quotex.png" class="logo" alt="Quotex Logo">
   </div>
 
-  <!-- SUCCESS CARD -->
-  <div class="card" id="success">
-    <div class="check">✅</div>
-    <div class="glow-text">
-      NO LOSS SETTING<br>
-      ON SUCCESSFUL
-    </div>
-  </div>
+  <div class="subtitle">ID LOGIN</div>
 
+  <input type="text" placeholder="Enter UID">
+  <input type="password" placeholder="Enter Password">
+  <button>Login</button>
 </div>
-
-<script>
-const FIXED_PASSWORD = "riskey09";
-
-function login(){
-  const uid = document.getElementById("uid").value.trim();
-  const pass = document.getElementById("pass").value;
-  const msg = document.getElementById("msg");
-
-  if(uid === ""){
-    msg.innerText = "UID required";
-    return;
-  }
-
-  if(pass === FIXED_PASSWORD){
-    document.getElementById("login").style.display="none";
-    document.getElementById("success").style.display="block";
-  }else{
-    msg.innerText = "Wrong Password";
-  }
-}
-</script>
 
 </body>
 </html>
