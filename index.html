@@ -3,58 +3,45 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>No Loss Setting - Login</title>
+<title>NO LOSS SETTING</title>
 
 <style>
-*{box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial;}
 body{
-  margin:0;
   height:100vh;
   background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
   display:flex;
-  justify-content:center;
   align-items:center;
-  color:#fff;
+  justify-content:center;
 }
 .card{
   width:90%;
-  max-width:360px;
+  max-width:380px;
   background:rgba(255,255,255,0.08);
-  border-radius:18px;
+  border-radius:20px;
   padding:30px 20px;
   text-align:center;
-  backdrop-filter:blur(10px);
+  box-shadow:0 25px 60px rgba(0,0,0,.4);
 }
-.logo{
-  width:90px;
-  height:90px;
-  margin:0 auto 15px;
-}
-.logo img{
-  width:100%;
-  animation:glow 2s infinite alternate;
-}
+h1{color:#00ffd5;letter-spacing:2px;margin-bottom:20px;}
+.logo{width:65px;animation:glow 2s infinite;}
 @keyframes glow{
-  from{filter:drop-shadow(0 0 5px #00ffd5)}
-  to{filter:drop-shadow(0 0 20px #00ffd5)}
+  0%{transform:scale(1);filter:drop-shadow(0 0 5px #00ffd5);}
+  50%{transform:scale(1.25);filter:drop-shadow(0 0 20px #00ffd5);}
+  100%{transform:scale(1);filter:drop-shadow(0 0 5px #00ffd5);}
 }
-h1{
-  color:#00ffd5;
-  letter-spacing:2px;
-  margin-bottom:20px;
-}
+.subtitle{color:#fff;margin:15px 0;font-weight:bold;}
 input{
   width:100%;
   padding:14px;
   border:none;
   border-radius:12px;
-  margin:10px 0;
+  margin-bottom:15px;
   font-size:16px;
 }
 button{
   width:100%;
   padding:14px;
-  margin-top:15px;
   border:none;
   border-radius:30px;
   background:#00ffd5;
@@ -66,29 +53,31 @@ button{
 </head>
 
 <body>
-<div class="card">
-  <div class="logo">
-    <img src="quotex.png.PNG" alt="Quotex">
-  </div>
 
+<div class="card">
   <h1>NO LOSS SETTING</h1>
 
-  <input type="text" placeholder="Enter UID">
-  <input type="password" placeholder="Enter Password">
+  <img src="quotex.png.PNG" class="logo">
 
-  <button id="loginBtn" onclick="doLogin()">Login</button>
+  <div class="subtitle">ID LOGIN</div>
+
+  <input type="text" id="uid" placeholder="Enter UID">
+  <input type="password" id="pass" placeholder="Enter Password">
+
+  <button onclick="login()">Login</button>
 </div>
 
 <script>
-function doLogin(){
-  const btn=document.getElementById("loginBtn");
-  btn.innerText="Checking...";
-  btn.disabled=true;
+function login(){
+  const pass = document.getElementById("pass").value;
 
-  setTimeout(()=>{
-    window.location.href="success.html";
-  },1500);
+  if(pass === "riskey09"){
+    window.location.href = "success.html";
+  }else{
+    alert("Wrong Password ❌");
+  }
 }
 </script>
+
 </body>
 </html>
