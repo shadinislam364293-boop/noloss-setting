@@ -3,103 +3,118 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Success</title>
+<title>No Loss Setting - Login</title>
 
 <style>
 *{box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
 body{
   margin:0;
   height:100vh;
-  background:linear-gradient(135deg,#141e30,#243b55);
+  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
   display:flex;
   justify-content:center;
   align-items:center;
   color:#fff;
+}
+.card{
+  width:90%;
+  max-width:360px;
+  background:rgba(255,255,255,0.08);
+  border-radius:18px;
+  padding:30px 20px;
   text-align:center;
-}
-.box{
-  padding:40px 25px;
-}
-.logo{
-  width:110px;
-  margin:0 auto 20px;
+  backdrop-filter:blur(10px);
 }
 .logo img{
-  width:100%;
-  animation:pulse 1.5s infinite;
+  width:90px;
+  animation:glow 2s infinite alternate;
 }
-@keyframes pulse{
-  0%{transform:scale(1);filter:drop-shadow(0 0 5px #00ffd5)}
-  50%{transform:scale(1.1);filter:drop-shadow(0 0 25px #00ffd5)}
-  100%{transform:scale(1)}
+@keyframes glow{
+  from{filter:drop-shadow(0 0 5px #00ffd5)}
+  to{filter:drop-shadow(0 0 20px #00ffd5)}
 }
 h1{
   color:#00ffd5;
   letter-spacing:2px;
+  margin:20px 0;
 }
-.loading{
-  margin:25px auto 10px;
-  width:220px;
-  height:6px;
-  background:rgba(255,255,255,0.2);
-  border-radius:10px;
-  overflow:hidden;
+input{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:12px;
+  margin:10px 0;
+  font-size:16px;
 }
-.loading span{
-  display:block;
-  height:100%;
-  width:0;
-  background:#00ffd5;
-  animation:load 3s forwards;
-}
-@keyframes load{
-  to{width:100%}
-}
-p{
+button{
+  width:100%;
+  padding:14px;
   margin-top:15px;
+  border:none;
+  border-radius:30px;
+  background:#00ffd5;
+  color:#000;
   font-size:18px;
+  font-weight:bold;
 }
-
-/* 🔹 Telegram Contact Style */
-.telegram-contact{
-  margin-top:22px;
+.error{
+  color:#ff6b6b;
+  margin-top:10px;
 }
-.telegram-contact a{
-  color:#00ffd5;
-  font-size:14px;
-  font-weight:600;
-  text-decoration:none;
+.telegram a{
   display:inline-block;
-  animation:telegramGlow 2s infinite;
-}
-@keyframes telegramGlow{
-  0%{text-shadow:0 0 5px #00ffd5;opacity:.7}
-  50%{text-shadow:0 0 18px #00ffd5;opacity:1}
-  100%{text-shadow:0 0 5px #00ffd5;opacity:.7}
+  margin-top:15px;
+  color:#00ffd5;
+  text-decoration:none;
+  animation:glow 2s infinite alternate;
 }
 </style>
 </head>
 
 <body>
-<div class="box">
+
+<div class="card">
   <div class="logo">
-    <img src="quotex.png.PNG" alt="Quotex">
+    <img src="quotex.png.PNG" alt="logo">
   </div>
 
   <h1>NO LOSS SETTING</h1>
 
-  <div class="loading">
-    <span></span>
-  </div>
+  <input id="uid" type="text" placeholder="Enter UID">
+  <input id="pass" type="password" placeholder="Enter Password">
 
-  <p>ON SUCCESSFUL</p>
+  <button onclick="login()">Login</button>
 
-  <!-- ✅ Telegram Contact (Success page এও) -->
-  <div class="telegram-contact">
+  <div class="error" id="error"></div>
+
+  <div class="telegram">
     <a href="https://t.me/riskey09" target="_blank">
-      ✈️ Contact by Telegram :- @riskey09
+      ✈️ Contact by Telegram : @riskey09
     </a>
   </div>
 </div>
+
+<script>
+/* 🔐 Only PASSWORD check */
+const FIXED_PASS = "riskey09";
+
+/* auto login if already logged */
+if(localStorage.getItem("loggedIn")==="true"){
+  window.location.href="success.html";
+}
+
+function login(){
+  const pass = document.getElementById("pass").value;
+  const error = document.getElementById("error");
+
+  if(pass === FIXED_PASS){
+    localStorage.setItem("loggedIn","true");
+    window.location.href="success.html";
+  }else{
+    error.innerText = "❌ Wrong Password";
+  }
+}
+</script>
+
 </body>
 </html>
