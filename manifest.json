@@ -1,0 +1,9 @@
+{
+  "name": "NO LOSS SETTING",
+  "short_name": "NO LOSS",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#0f2027",
+  "theme_color": "#00ffcc",
+  "icons": []
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NO LOSS SETTING</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#00ffcc">
+<style>
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  color:#fff;
+}
+.app{
+  max-width:420px;
+  margin:auto;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.card{
+  width:100%;
+  background:rgba(255,255,255,.1);
+  padding:30px;
+  border-radius:20px;
+  text-align:center;
+}
+h1{color:#00ffcc}
+input{
+  width:100%;
+  padding:14px;
+  margin:12px 0;
+  border:none;
+  border-radius:12px;
+}
+button{
+  width:100%;
+  padding:14px;
+  background:#00ffcc;
+  color:#000;
+  border:none;
+  border-radius:30px;
+  font-size:18px;
+  font-weight:bold;
+}
+.msg{color:#ff7b7b}
+#success{display:none}
+.glow{
+  font-size:26px;
+  font-weight:bold;
+  animation: glow 2s infinite alternate;
+}
+@keyframes glow{
+  0%{color:#00ffcc;text-shadow:0 0 10px #00ffcc;}
+  50%{color:#00ffff;text-shadow:0 0 20px #00ffff;}
+  100%{color:#00ff66;text-shadow:0 0 30px #00ff66;}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="card" id="login">
+    <h1>NO LOSS SETTING</h1>
+    <h3>ID LOGIN</h3>
+    <input id="uid" placeholder="Enter UID">
+    <input id="pass" type="password" placeholder="Enter Password">
+    <button onclick="login()">Login</button>
+    <div class="msg" id="msg"></div>
+  </div>
+
+  <div class="card" id="success">
+    <div class="glow">NO LOSS SETTING<br>ON SUCCESSFUL</div>
+  </div>
+</div>
+
+<script>
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('sw.js');
+}
+const FIXED_PASSWORD="riskey09";
+function login(){
+  const uid=document.getElementById("uid").value.trim();
+  const pass=document.getElementById("pass").value;
+  const msg=document.getElementById("msg");
+  if(uid===""){msg.innerText="UID required";return;}
+  if(pass===FIXED_PASSWORD){
+    document.getElementById("login").style.display="none";
+    document.getElementById("success").style.display="block";
+  }else{
+    msg.innerText="Wrong Password";
+  }
+}
+</script>
+</body>
+</html>
